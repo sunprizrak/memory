@@ -1,0 +1,6 @@
+django
+gunicorn
+django-cleanup
+psycopg2-binary
+django-recaptcha
+django-grappelli

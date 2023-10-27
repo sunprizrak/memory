@@ -1,0 +1,22 @@
+
+#card-wrap {
+    width: 70%;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#card-wrap form button {
+    width: 50%;
+}
+
+.captcha-error {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
+
+#id_text {
+    resize: none;
+}

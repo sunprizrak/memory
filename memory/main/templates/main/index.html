@@ -1,0 +1,50 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container vh-100 d-flex align-items-center justify-content-center">
+        <div id="card-wrap" class="shadow">
+            <form class="needs-validation" method="post" novalidate>
+                {% csrf_token %}
+                <div class="row-1">
+                    <div class="col-7 mb-3">
+                        <label for="" class="form-label">Ваше имя</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="" class="form-label">Дата отправки</label>
+                        {{ form.send_date }}
+                        <div class="invalid-feedback">
+                            Обязательное поле.
+                        </div>
+                    </div>
+                    <div class="col-7 mb-3">
+                        <label for="" class="form-label">Введите Email</label>
+                        {{ form.email }}
+                        <div class="invalid-feedback">
+                            Обязательное поле.
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <label for="" class="form-label">Введите текст</label>
+                        {{ form.text }}
+                        <div class="invalid-feedback">
+                            Обязательное поле.
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        {{ form.captcha }}
+                        <div class="mt-1 text-danger">
+                            {{ form.captcha.errors }}
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Send Email</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
