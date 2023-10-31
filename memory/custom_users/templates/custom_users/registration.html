@@ -1,0 +1,47 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container vh-100 d-flex align-items-center justify-content-center">
+        <form class="needs-validation auth-form" method="post" novalidate>
+            {% csrf_token %}
+            <div class="row-1">
+                <div class="col mb-3">
+                    <label for="" class="form-label">Введите Email</label>
+                    {{ form.email }}
+                    <div class="invalid-feedback">
+                        Обязательное поле!
+                    </div>
+                </div>
+                 <div class="col mb-3 error-feedback">
+                     {{ form.email.errors }}
+                 </div>
+                <div class="col mb-3">
+                    <label for="" class="form-label">Придумайте пароль</label>
+                    {{ form.password1 }}
+                    <div class="invalid-feedback">
+                        Обязательное поле!
+                    </div>
+                </div>
+                <div class="col mb-3 error-feedback">
+                     {{ form.password1.errors }}
+                </div>
+                <div class="col mb-3">
+                    <label for="" class="form-label">Повторите пароль</label>
+                    {{ form.password2 }}
+                    <div class="invalid-feedback">
+                        Обязательное поле
+                    </div>
+                </div>
+                <div class="col mb-3 error-feedback">
+                     {{ form.password2.errors }}
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">зарегистрировать</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

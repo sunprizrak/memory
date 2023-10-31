@@ -1,3 +1,10 @@
+@import url('/static/custom_users/css/custom_users.css');
+
+.error-feedback {
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
 
 #card-wrap {
     width: 70%;

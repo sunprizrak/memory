@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'custom_users',
     'django_cleanup.apps.CleanupConfig',
 ]
 
@@ -136,11 +137,28 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Celery
+# AUTH USER
 
-CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
+AUTH_USER_MODEL = 'custom_users.CustomUser'
+
+LOGIN_REDIRECT_URL = "home"
 
 # Recaptcha
 
 RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
+
+# Celery
+
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
+
+# Email
+
+EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+
+# SITE_NAME = ""

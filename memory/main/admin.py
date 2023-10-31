@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import MemorandumModel
+from .models import PostalLetterModel
 
 
-@admin.register(MemorandumModel)
+@admin.register(PostalLetterModel)
 class MemorandumAdmin(admin.ModelAdmin):
     list_display = ['email', 'send_date', 'created']
     readonly_fields = ['name', 'email', 'send_date', 'created']

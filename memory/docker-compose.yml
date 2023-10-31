@@ -23,10 +23,16 @@ services:
     redis:
         image: redis:7.2.2-alpine
         hostname: redis
-    celery:
+    worker:
         build:
             context: .
         hostname: worker
+        env_file:
+            - ./.env.dev
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=memory_dev
         entrypoint: celery
         command: -A celery_app.app worker --loglevel=error
         volumes:
@@ -35,10 +41,17 @@ services:
             - redis
         depends_on:
             - redis
+            - db
     flower:
         build:
             context: .
         hostname: flower
+        env_file:
+            - ./.env.dev
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=memory_dev
         entrypoint: celery
         command: -A celery_app.app flower
         volumes:
@@ -47,6 +60,8 @@ services:
             - redis
         depends_on:
             - redis
+            - worker
+            - db
         ports:
             - '5555:5555'
 

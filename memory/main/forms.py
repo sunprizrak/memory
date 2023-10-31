@@ -1,14 +1,14 @@
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
 from django import forms
-from .models import MemorandumModel
+from .models import PostalLetterModel
 
 
 class MemorandumForm(forms.ModelForm):
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, required=True)
 
     class Meta:
-        model = MemorandumModel
+        model = PostalLetterModel
         fields = '__all__'
         exclude = ['created']
         widgets = {
