@@ -4,6 +4,7 @@ from .tasks import send_email_task
 
 
 class PostalLetterModel(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(verbose_name='Имя', max_length=150, blank=True)
     send_date = models.DateTimeField(verbose_name='Дата отправки')
     email = models.EmailField(verbose_name='Email получателя', max_length=254)
@@ -23,7 +24,3 @@ class PostalLetterModel(models.Model):
     class Meta:
         verbose_name = 'Письмо'
         verbose_name_plural = 'Письма'
-
-
-class UserPostalLetterModel(PostalLetterModel):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

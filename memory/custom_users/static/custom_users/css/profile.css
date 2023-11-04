@@ -1,0 +1,7 @@
+.wrap-table {
+    border: solid 1px;
+}
+
+.wrap-table table tbody tr td {
+    cursor: pointer;
+}

@@ -141,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'custom_users.CustomUser'
 
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "profile"
 
 # Recaptcha
 

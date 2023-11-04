@@ -22,4 +22,4 @@ class MemorandumAdmin(admin.ModelAdmin):
         if obj:
             return [(None, {'fields': self.readonly_fields}), ]
         else:
-            return [(None, {'fields': ['name', 'email', 'send_date', 'text']}), ]
+            return [(None, {'fields': ['user', 'name', 'email', 'send_date', 'text']}), ]

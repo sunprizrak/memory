@@ -6,13 +6,14 @@
     color: #dc3545;
 }
 
-#card-wrap {
+.form-wrap {
+    margin-top: 50px;
     width: 70%;
     border-radius: 15px;
     padding: 10px;
 }
 
-#card-wrap form button {
+.form-wrap form button {
     width: 50%;
 }
 

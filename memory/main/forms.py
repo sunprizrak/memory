@@ -4,7 +4,7 @@ from django import forms
 from .models import PostalLetterModel
 
 
-class MemorandumForm(forms.ModelForm):
+class PostalLetterForm(forms.ModelForm):
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, required=True)
 
     class Meta:

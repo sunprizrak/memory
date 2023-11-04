@@ -5,30 +5,30 @@
 
 {% block content %}
     <div class="container d-flex justify-content-center">
-        <div class="form-wrap shadow">
+       <div class="form-wrap shadow">
             <form class="needs-validation" method="post" novalidate>
                 {% csrf_token %}
                 <div class="row-1">
                     <div class="col-7 mb-3">
-                        <label class="form-label">Ваше имя</label>
+                        <label for="" class="form-label">Ваше имя</label>
                         {{ form.name }}
                     </div>
                     <div class="col-3 mb-3">
-                        <label class="form-label">Дата отправки</label>
+                        <label for="" class="form-label">Дата отправки</label>
                         {{ form.send_date }}
                         <div class="invalid-feedback">
                             Обязательное поле.
                         </div>
                     </div>
                     <div class="col-7 mb-3">
-                        <label class="form-label">Email получателя</label>
+                        <label for="" class="form-label">Email получателя</label>
                         {{ form.email }}
                         <div class="invalid-feedback">
                             Обязательное поле.
                         </div>
                     </div>
                     <div class="col mb-3">
-                        <label class="form-label">Текст письма</label>
+                        <label for="" class="form-label">Текст письма</label>
                         {{ form.text }}
                         <div class="invalid-feedback">
                             Обязательное поле.
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="col d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        <button type="submit" class="btn btn-primary">Обновить</button>
                     </div>
                 </div>
             </form>
