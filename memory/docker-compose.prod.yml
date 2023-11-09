@@ -1,0 +1,97 @@
+version: '3.9'
+
+services:
+    web:
+        build:
+            context: ./
+            dockerfile: Dockerfile.prod
+        command: gunicorn memory.wsgi:application --bind 0.0.0.0:8000
+        volumes:
+            - static_volume:/home/memory/web/static
+            - media_volume:/home/memory/web/media
+        expose:
+            - '8000'
+        stdin_open: true
+        tty: true
+        env_file:
+            - ./.env.prod
+            - ./.env.prod.db
+        depends_on:
+            - db
+    db:
+        image: postgres:16.0-alpine3.18
+        stdin_open: true
+        tty: true
+        volumes:
+            - postgres_data:/var/lib/postgresql/data/
+        ports:
+            - "5432:5432"
+        env_file:
+            - ./.env.prod.db
+    redis:
+        image: redis:7.2.2-alpine
+        hostname: redis
+    worker:
+        build:
+            context: .
+        hostname: worker
+        env_file:
+            - ./.env.prod
+            - ./.env.prod.db
+        entrypoint: celery
+        command: -A celery_app.app worker --loglevel=error
+        volumes:
+            - .:/usr/src/memory
+        links:
+            - redis
+        depends_on:
+            - redis
+            - db
+    flower:
+        build:
+            context: .
+        hostname: flower
+        env_file:
+            - ./.env.prod
+            - ./.env.prod.db
+        entrypoint: celery
+        command: -A celery_app.app flower
+        volumes:
+            - .:/usr/src/memory
+        links:
+            - redis
+        depends_on:
+            - redis
+            - worker
+            - db
+        ports:
+            - '5555:5555'
+    nginx:
+        build: ./nginx
+        volumes:
+            - static_volume:/home/memory/web/static
+            - media_volume:/home/memory/web/media
+            - ./data/certbot/conf:/etc/letsencrypt
+            - ./data/certbot/www:/var/www/certbot
+        ports:
+            - "80:80"
+            - "443:443"
+        stdin_open: true
+        tty: true
+        command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+        restart: always
+        depends_on:
+            - web
+    certbot:
+        image: certbot/certbot
+        restart: unless-stopped
+        volumes:
+            - ./data/certbot/conf:/etc/letsencrypt
+            - ./data/certbot/www:/var/www/certbot
+        stdin_open: true
+        tty: true
+        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+volumes:
+    postgres_data:
+    static_volume:
+    media_volume:

@@ -1,2 +1,4 @@
 /memory/.env.dev
 /memory/db.sqlite3
+/memory/.env.prod.db
+/memory/.env.prod

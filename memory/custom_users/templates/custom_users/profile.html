@@ -7,7 +7,7 @@
     <div class="container vh-100">
         <div class="row">
             <div class="col d-flex justify-content-between">
-                <h1>Ваши письма</h1>
+                <h1>Мои письма</h1>
                 <div class="d-flex align-self-center">
                     <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Написать письмо</button></a>
                 </div>
@@ -19,7 +19,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-center">Адрес</th>
+                                <th scope="col" class="text-center">Кому</th>
                                 <th scope="col" class="text-center">Дата отправки</th>
                                 <th scope="col" class="text-center">Создана</th>
                             </tr>
@@ -27,7 +27,7 @@
                         <tbody>
                             {% for letter in letters %}
                                 <tr data-href="{% url 'letter_update' letter.pk %}">
-                                    <td class="text-center">{{ letter.email }}</td>
+                                    <td class="text-center">{{ letter.name_to }}</td>
                                     <td class="text-center">{{ letter.send_date }}</td>
                                     <td class="text-center">{{ letter.created }}</td>
                                 </tr>

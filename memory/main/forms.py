@@ -12,18 +12,24 @@ class PostalLetterForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['created']
         widgets = {
-            'name': forms.TextInput(attrs={
+            'name_from': forms.TextInput(attrs={
                 'class': 'form-control',
             }),
-            'send_date': forms.DateTimeInput(attrs={
+            'send_date': forms.DateInput(attrs={
                 'class': 'form-control',
-                'type': 'datetime-local',
+                'type': 'date',
                 'required': True,
+            }),
+            'name_to': forms.TextInput(attrs={
+                'class': 'form-control',
+                'required': True,
+            }),
+            'address': forms.TextInput(attrs={
+                'class': 'form-control',
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
                 'type': 'email',
-                'required': True,
             }),
             'text': forms.Textarea(attrs={
                 'class': 'form-control',

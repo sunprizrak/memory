@@ -5,7 +5,7 @@ from .models import PostalLetterModel
 @admin.register(PostalLetterModel)
 class MemorandumAdmin(admin.ModelAdmin):
     list_display = ['email', 'send_date', 'created']
-    readonly_fields = ['name', 'email', 'send_date', 'created']
+    readonly_fields = ['name_from', 'email', 'send_date', 'name_to', 'address', 'created']
 
     def get_readonly_fields(self, request, obj=None):
         if obj:
@@ -22,4 +22,4 @@ class MemorandumAdmin(admin.ModelAdmin):
         if obj:
             return [(None, {'fields': self.readonly_fields}), ]
         else:
-            return [(None, {'fields': ['user', 'name', 'email', 'send_date', 'text']}), ]
+            return [(None, {'fields': ['user', 'name_from', 'email', 'send_date', 'name_to', 'address',  'text']}), ]

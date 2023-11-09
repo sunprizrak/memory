@@ -39,5 +39,11 @@ class LetterUpdate(UpdateView):
         form.save()
         return super().form_valid(form)
 
+    def get_initial(self):
+        initial = super().get_initial()
+        if self.object and hasattr(self.object, 'send_date'):
+            initial['send_date'] = self.object.send_date.strftime('%Y-%m-%d')
+        return initial
+
     def get_success_url(self):
         return reverse_lazy('profile')
