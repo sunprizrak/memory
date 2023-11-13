@@ -21,7 +21,7 @@ class PostalLetterModel(models.Model):
     #     return super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'Письмо для {self.email}'
+        return f'Письмо для {self.name_to}'
 
     class Meta:
         verbose_name = 'Письмо'

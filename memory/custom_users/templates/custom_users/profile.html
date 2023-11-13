@@ -14,8 +14,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <div class="wrap-table">
+            <div class="col d-inline-flex">
+                <div class="wrap-table w-100">
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -35,9 +35,32 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="wrap-table" id="right-wrap-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Удалить</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for letter in letters %}
+                                <tr>
+                                    <td class="text-center">
+                                        <a href="{% url 'letter_delete' letter.pk %}" class="text-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block modal %}
 {% endblock %}
 
 {% block js %}

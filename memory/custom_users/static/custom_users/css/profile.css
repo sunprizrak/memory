@@ -5,3 +5,7 @@
 .wrap-table table tbody tr td {
     cursor: pointer;
 }
+
+#right-wrap-table {
+    border-left: 0px;
+}

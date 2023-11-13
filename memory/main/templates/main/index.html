@@ -5,24 +5,25 @@
 
 {% block content %}
     <div class="container d-flex justify-content-center">
-        <div class="form-wrap shadow">
+        <div class="form-wrap">
             <form class="needs-validation" method="post" novalidate>
                 {% csrf_token %}
-                <div class="row-1">
-                    <div class="col-7 mb-3">
+                <div class="row">
+                    <div class="col-6 mb-3">
                         <label class="form-label">От кого</label>
                         {{ form.name_from }}
                     </div>
-                    <div class="col-3 mb-3">
-                        <label class="form-label">Дата отправки</label>
-                        {{ form.send_date }}
+                    <div class="col-6 mb-3">
+                        <label class="form-label">Кому</label>
+                        {{ form.name_to }}
                         <div class="invalid-feedback">
                             Обязательное поле.
                         </div>
                     </div>
-                    <div class="col-7 mb-3">
-                        <label class="form-label">Кому</label>
-                        {{ form.name_to }}
+                </div>
+                    <div class="col-3 mb-3">
+                        <label class="form-label">Дата отправки</label>
+                        {{ form.send_date }}
                         <div class="invalid-feedback">
                             Обязательное поле.
                         </div>
@@ -45,7 +46,7 @@
                             Обязательное поле.
                         </div>
                     </div>
-                    <div class="col-auto mb-3">
+                    <div class="col-auto mb-3 d-flex justify-content-center">
                         {{ form.captcha }}
                         <div class="mt-1 text-danger">
                             {{ form.captcha.errors }}
@@ -54,7 +55,7 @@
                     <div class="col d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary">Отправить</button>
                     </div>
-                </div>
+
             </form>
         </div>
     </div>

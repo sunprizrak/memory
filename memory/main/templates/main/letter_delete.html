@@ -1,0 +1,31 @@
+{% extends 'custom_users/profile.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block modal %}
+    <div class="modal" id="letterDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="letterDelete" aria-hidden="true">
+        <div class="modal-dialog">
+             <form method="post">
+                 {% csrf_token %}
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h1 class="modal-title fs-5" id="letterDeleteLabel">Удаление</h1>
+                         <a href="{% url 'profile' %}"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                     </div>
+                     <div class="modal-body">
+                         Вы уверены, что хотите удалить {{ delete_letter }}
+                     </div>
+                     <div class="modal-footer">
+                         <a href="{% url 'profile' %}"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button></a>
+                         <button type="submit" class="btn btn-primary">Удалить</button>
+                     </div>
+                 </div>
+             </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'main/js/modal_delete.js' %}"></script>
+{% endblock %}
