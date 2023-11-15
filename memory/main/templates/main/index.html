@@ -21,6 +21,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
                     <div class="col-3 mb-3">
                         <label class="form-label">Дата отправки</label>
                         {{ form.send_date }}
@@ -28,6 +29,8 @@
                             Обязательное поле.
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-7 mb-3">
                         <label class="form-label">Адрес получателя</label>
                         {{ form.address }}
@@ -35,10 +38,14 @@
                             Обязательное поле.
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-7 mb-3">
                         <label class="form-label">Email получателя</label>
                         {{ form.email }}
                     </div>
+                </div>
+                <div class="row">
                     <div class="col mb-3">
                         <label class="form-label">Текст письма</label>
                         {{ form.text }}
@@ -46,16 +53,20 @@
                             Обязательное поле.
                         </div>
                     </div>
-                    <div class="col-auto mb-3 d-flex justify-content-center">
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-auto mb-3">
                         {{ form.captcha }}
                         <div class="mt-1 text-danger">
                             {{ form.captcha.errors }}
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary">Отправить</button>
                     </div>
-
+                </div>
             </form>
         </div>
     </div>

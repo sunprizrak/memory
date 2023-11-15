@@ -1,10 +1,10 @@
 from django.contrib.auth import logout, login, get_user_model
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, FormView
-from custom_users.forms import RegistrationUserForm, LoginUserForm
+from custom_users.forms import RegistrationUserForm, LoginUserForm, PasswordEditForm
 from main.models import PostalLetterModel
 
 
@@ -35,6 +35,12 @@ def logout_user(request):
     return redirect('login')
 
 
+class PasswordEditView(PasswordChangeView):
+    form_class = PasswordEditForm
+    template_name = 'custom_users/password_change.html'
+    success_url = reverse_lazy('profile')
+
+
 class ProfileView(ListView):
     model = PostalLetterModel
     template_name = 'custom_users/profile.html'
@@ -44,6 +50,8 @@ class ProfileView(ListView):
     }
 
     def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user).order_by('-created')
+        if self.request.user.is_authenticated:
+            return self.model.objects.filter(user=self.request.user).order_by('-created')
+
 
 

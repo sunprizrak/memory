@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.urls import reverse_lazy
 from django.views.generic import FormView, UpdateView, DeleteView
 from .forms import PostalLetterForm
@@ -30,6 +31,12 @@ class LetterUpdateView(UpdateView):
         'title': 'Letter update'
     }
 
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        if self.request.user != obj.user:
+            raise Http404("Вы не можете редактировать эту запись.")
+        return obj
+
     def form_valid(self, form):
         if self.request.user.is_authenticated:
             user = self.request.user
@@ -54,6 +61,12 @@ class LetterDeleteView(DeleteView):
     context_object_name = 'delete_letter'
     template_name = 'main/letter_delete.html'
     success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        if self.request.user != obj.user:
+            raise Http404("Вы не можете удалить эту запись.")
+        return obj
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
