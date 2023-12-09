@@ -1,6 +1,6 @@
 #!/bin/bash
 
-domains=(adjacency.by)
+domains=(adjacency.by www.adjacency.by www.lol.by)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="site.adjacency@gmail.com" # Adding a valid address is strongly recommended
