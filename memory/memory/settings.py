@@ -34,7 +34,7 @@ CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', 'http://localhost'
 
 INSTALLED_APPS = [
     'main',
-    'captcha',
+    'django_recaptcha',
     'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
