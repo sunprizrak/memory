@@ -19,18 +19,17 @@ section[id='index'] {
     background: url('../texture/white_wood_texture.avif');
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: row;
+    overflow-x: hidden;
 }
 
-img[alt=pen] {
+img[alt='pen'] {
     height: 500px;
-    position: relative;
-    top: 12rem;
-    left: -5rem;
+    position: absolute;
+    right: -30%;
+    top: 40%;
     transform: rotate(-180deg);
-    z-index: 1;
+    z-index: -1;
 }
 
 /* form letter */
@@ -38,13 +37,10 @@ img[alt=pen] {
 .form-letter {
     position: relative;
     perspective: 1000px;
-    width: 50%;
-    height: 50%;
+    top: 20%;
+    min-width: 935px;
+    height: 40%;
     z-index: 1000;
-}
-
-.letter-font-side {
-    height: 100%;
 }
 
 .letter-back-side {
@@ -54,8 +50,6 @@ img[alt=pen] {
 .letter-front-side,
 .letter-back-side {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     padding: 15px;
     backface-visibility: hidden;
@@ -96,11 +90,49 @@ img[alt=pen] {
     color: #dc3545;
 }
 
+.error-feedback-right {
+    margin-top: 10px !important;
+    margin-left: 1rem;
+    align-items: center;
+}
+
 #id_text {
     resize: none;
-    height: 430px;
+    height: 400px;
+}
+
+#id_send_date {
+    max-width: 185px;
+}
+
+#id_address {
+    max-width: 450px;
 }
 
 /* end form */
 
 /* end Index Page */
+
+@media (min-width: 1366px) and (max-width: 1400px) {
+    .form-letter {
+        min-width: 825px;
+        top: 15%;
+    }
+
+    img[alt='pen'] {
+        right: -35%;
+        top: 45%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .form-letter {
+        min-width: 750px;
+        top: 15%;
+    }
+
+    img[alt='pen'] {
+        right: -35%;
+        top: 45%;
+    }
+}
