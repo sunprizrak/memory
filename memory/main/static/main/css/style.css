@@ -29,6 +29,7 @@ img[alt='pen'] {
     right: -30%;
     top: 40%;
     transform: rotate(-180deg);
+    pointer-events: none;
     z-index: -1;
 }
 
