@@ -1,23 +1,85 @@
 @import url('/static/custom_users/css/custom_users.css');
 
-main {
-    margin-top: 56px;
+html, body, main {
+    height: 100%;
 }
 
-.error-feedback {
-    margin-top: 0.25rem;
-    font-size: .875em;
-    color: #dc3545;
+/* header */
+
+#user-dropdown-menu {
+    width: 100%;
 }
 
-.form-wrap {
-    width: 70%;
-    border-radius: 15px;
-    padding: 10px;
+/* end header */
+
+/* Index Page */
+
+section[id='index'] {
+    height: 100%;
+    background: url('../texture/white_wood_texture.avif');
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 
-.form-wrap form button {
+img[alt=pen] {
+    height: 500px;
+    position: relative;
+    top: 12rem;
+    left: -5rem;
+    transform: rotate(-180deg);
+    z-index: 1;
+}
+
+/* form letter */
+
+.form-letter {
+    position: relative;
+    perspective: 1000px;
     width: 50%;
+    height: 50%;
+    z-index: 1000;
+}
+
+.letter-font-side {
+    height: 100%;
+}
+
+.letter-back-side {
+    transform: rotateX(-180deg);
+}
+
+.letter-front-side,
+.letter-back-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    backface-visibility: hidden;
+    transition: all 0.5s ease-in;
+    background: #fff;
+    border: 16px solid transparent;
+    border-image: 16 repeating-linear-gradient(-45deg,
+    red 0, red 1em,
+    transparent 0, transparent 2em,
+    #58a 0, #58a 3em,
+    transparent 0, transparent 4em);
+
+}
+
+.see {
+    transform: rotateX(0deg) !important;
+}
+
+.turn-back {
+    transform: rotateX(180deg);
+}
+
+.turn-front {
+    transform: rotateX(-180deg);
 }
 
 .captcha-error {
@@ -28,6 +90,17 @@ main {
     color: #dc3545;
 }
 
+.error-feedback {
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+}
+
 #id_text {
     resize: none;
+    height: 430px;
 }
+
+/* end form */
+
+/* end Index Page */

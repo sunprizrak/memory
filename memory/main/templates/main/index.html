@@ -4,10 +4,26 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    <div class="container d-flex justify-content-center">
-        <div class="form-wrap">
-            <form class="needs-validation" method="post" novalidate>
-                {% csrf_token %}
+    <section id="index">
+        <form class="form-letter needs-validation" method="post" novalidate>
+            {% csrf_token %}
+            <div class="letter-front-side">
+                <div class="row">
+                    <div class="col mb-3">
+                        <label class="form-label">Напишите Письмо</label>
+                        {{ form.text }}
+                        <div class="invalid-feedback">
+                            Обязательное поле.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary">Далее</button>
+                    </div>
+                </div>
+            </div>
+            <div class="letter-back-side">
                 <div class="row">
                     <div class="col-6 mb-3">
                         <label class="form-label">От кого</label>
@@ -45,15 +61,6 @@
                         {{ form.email }}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <label class="form-label">Текст письма</label>
-                        {{ form.text }}
-                        <div class="invalid-feedback">
-                            Обязательное поле.
-                        </div>
-                    </div>
-                </div>
                 <div class="row justify-content-center">
                     <div class="col-auto mb-3">
                         {{ form.captcha }}
@@ -64,10 +71,20 @@
                 </div>
                 <div class="row">
                     <div class="col d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        <button type="submit" class="btn btn-success">Отправить</button>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="button" name="back" class="btn btn-secondary">Назад</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <img src="{% static 'main/img/pen.png' %}" alt="pen">
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'main/js/form_letter.js' %}"></script>
 {% endblock %}
