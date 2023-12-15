@@ -5,90 +5,79 @@
 
 {% block content %}
     <section id="index">
+        <div class="cabinet-button">
+            <a href="{% url 'profile' %}">Личный кабинет</a>
+        </div>
         <form class="form-letter needs-validation" method="post" novalidate>
             {% csrf_token %}
-            <div class="letter-front-side">
-                <div class="row">
-                    <div class="col mb-3">
-                        <label class="form-label">Напишите Письмо</label>
-                        {{ form.text }}
-                        <div class="invalid-feedback">
-                            Обязательное поле.
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label class="form-label">От кого</label>
+                    {{ form.name_from }}
                 </div>
-                <div class="row">
-                    <div class="col d-flex justify-content-end">
-                        <button type="button" class="btn btn-primary">Далее</button>
+                <div class="col-6 mb-3">
+                    <label class="form-label">Кому</label>
+                    {{ form.name_to }}
+                    <div class="invalid-feedback">
+                        Обязательное поле.
                     </div>
                 </div>
             </div>
-            <div class="letter-back-side">
-                <div class="row">
-                    <div class="col-6 mb-3">
-                        <label class="form-label">От кого</label>
-                        {{ form.name_from }}
-                    </div>
-                    <div class="col-6 mb-3">
-                        <label class="form-label">Кому</label>
-                        {{ form.name_to }}
-                        <div class="invalid-feedback">
-                            Обязательное поле.
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <label class="form-label">Дата отправки</label>
-                        <div class="row">
-                            <div class="col d-inline-flex">
-                                {{ form.send_date }}
-                                <div class="invalid-feedback error-feedback-right">
-                                    Обязательное поле.
-                                </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label">Дата отправки</label>
+                    <div class="row">
+                        <div class="col d-inline-flex">
+                            {{ form.send_date }}
+                            <div class="invalid-feedback error-feedback-right">
+                                Обязательное поле.
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-5 mb-3">
-                        <label class="form-label">Email получателя</label>
-                        {{ form.email }}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-5 mb-3">
+                    <label class="form-label">Email получателя</label>
+                    {{ form.email }}
                 </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <label class="form-label">Адрес получателя</label>
-                        <div class="row">
-                            <div class="col d-inline-flex">
-                                {{ form.address }}
-                                <div class="invalid-feedback error-feedback-right">
-                                    Обязательное поле.
-                                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label">Адрес получателя</label>
+                    <div class="row">
+                        <div class="col d-inline-flex">
+                            {{ form.address }}
+                            <div class="invalid-feedback error-feedback-right">
+                                Обязательное поле.
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-auto mb-3">
-                        {{ form.captcha }}
-                        <div class="mt-1 text-danger">
-                            {{ form.captcha.errors }}
-                        </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label class="form-label">Текст письма</label>
+                    {{ form.text }}
+                    <div class="invalid-feedback">
+                        Обязательное поле.
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col d-flex justify-content-between">
-                        <button type="button" name="back" class="btn btn-secondary">Назад</button>
-                        <button type="submit" class="btn btn-success">Отправить</button>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto mb-3">
+                    {{ form.captcha }}
+                    <div class="mt-1 text-danger">
+                        {{ form.captcha.errors }}
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success">Отправить</button>
                 </div>
             </div>
             <img src="{% static 'main/img/pen.png' %}" alt="pen">
         </form>
     </section>
-{% endblock %}
-
-{% block js %}
-    <script src="{% static 'main/js/form_letter.js' %}"></script>
 {% endblock %}

@@ -15,19 +15,58 @@ html, body, main {
 /* Index Page */
 
 section[id='index'] {
-    height: 100%;
     background: url('../texture/white_wood_texture.avif');
     position: relative;
+    min-height: 100%;
     display: flex;
     justify-content: center;
-    overflow-x: hidden;
 }
 
-img[alt='pen'] {
-    height: 500px;
+.cabinet-button {
     position: absolute;
+    top: 3%;
+    right: 0;
+    padding: 10px 10px 10px 10px;
+    background-color: #ebebed;
+    cursor: pointer;
+}
+
+
+.cabinet-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -14px; /* Положение флажка */
+    transform: rotate(-180deg);
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    border-top: 21px solid #ebebed; /* Острая часть флажка */
+    border-bottom: 23px solid #ebebed; /* Острая часть флажка */
+    border-right: 14px solid transparent; /* Острая часть флажка */
+}
+
+.cabinet-button a {
+    color: #212529;
+    text-decoration: none;
+    user-select: none;
+}
+
+.cabinet-button a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+img[alt='pen'] {
+    position: absolute;
+    height: 500px;
+    top: 23%;
     right: -30%;
-    top: 40%;
     transform: rotate(-180deg);
     pointer-events: none;
     z-index: -1;
@@ -37,44 +76,13 @@ img[alt='pen'] {
 
 .form-letter {
     position: relative;
-    perspective: 1000px;
-    top: 20%;
-    min-width: 935px;
-    height: 40%;
-    z-index: 1000;
-}
-
-.letter-back-side {
-    transform: rotateX(-180deg);
-}
-
-.letter-front-side,
-.letter-back-side {
-    position: absolute;
-    width: 100%;
+    margin-top: 10%;
     padding: 15px;
-    backface-visibility: hidden;
-    transition: all 0.5s ease-in;
-    background: #fff;
-    border: 16px solid transparent;
-    border-image: 16 repeating-linear-gradient(-45deg,
-    red 0, red 1em,
-    transparent 0, transparent 2em,
-    #58a 0, #58a 3em,
-    transparent 0, transparent 4em);
-
-}
-
-.see {
-    transform: rotateX(0deg) !important;
-}
-
-.turn-back {
-    transform: rotateX(180deg);
-}
-
-.turn-front {
-    transform: rotateX(-180deg);
+    min-width: 935px;
+    border: solid 2px gray;
+    z-index: 10000;
+    margin-bottom: 50px;
+    background-color: #fff;
 }
 
 .captcha-error {
@@ -99,7 +107,6 @@ img[alt='pen'] {
 
 #id_text {
     resize: none;
-    height: 400px;
 }
 
 #id_send_date {
@@ -117,23 +124,20 @@ img[alt='pen'] {
 @media (min-width: 1366px) and (max-width: 1400px) {
     .form-letter {
         min-width: 825px;
-        top: 15%;
+        margin-top: 10%;
     }
 
     img[alt='pen'] {
         right: -35%;
-        top: 45%;
     }
 }
 
 @media (min-width: 1024px) and (max-width: 1365px) {
     .form-letter {
         min-width: 750px;
-        top: 15%;
     }
 
     img[alt='pen'] {
         right: -35%;
-        top: 45%;
     }
 }
