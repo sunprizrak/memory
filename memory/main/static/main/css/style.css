@@ -1,7 +1,11 @@
 @import url('/static/custom_users/css/custom_users.css');
 
-html, body, main {
+html {
     height: 100%;
+}
+
+body, main {
+    min-height: 100%;
 }
 
 /* header */
@@ -20,6 +24,12 @@ section[id='index'] {
     min-height: 100%;
     display: flex;
     justify-content: center;
+}
+
+.white-top-bottom {
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
 }
 
 .cabinet-button {
