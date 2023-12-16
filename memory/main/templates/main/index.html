@@ -6,8 +6,11 @@
 {% block content %}
     <div class="white-top-bottom"></div>
     <section id="index">
-        <div class="cabinet-button">
-            <a href="{% url 'profile' %}">Личный кабинет</a>
+        <div class="wrap-cabinet-button">
+            <div class="cabinet-button">
+                <span></span>
+                <a href="{% url 'profile' %}">Личный кабинет</a>
+            </div>
         </div>
         <form class="form-letter needs-validation" method="post" novalidate>
             {% csrf_token %}
