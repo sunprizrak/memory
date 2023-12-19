@@ -1,9 +1,10 @@
-from django.contrib.auth import logout, login, get_user_model
+from django.contrib.auth import logout, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, FormView
+from django.views.generic import CreateView, ListView
 from custom_users.forms import RegistrationUserForm, LoginUserForm, PasswordEditForm
 from main.models import PostalLetterModel
 
@@ -35,14 +36,16 @@ def logout_user(request):
     return redirect('login')
 
 
-class PasswordEditView(PasswordChangeView):
+class PasswordEditView(LoginRequiredMixin, PasswordChangeView):
     form_class = PasswordEditForm
+    login_url = 'login'
     template_name = 'custom_users/password_change.html'
     success_url = reverse_lazy('profile')
 
 
-class ProfileView(ListView):
+class ProfileView(LoginRequiredMixin, ListView):
     model = PostalLetterModel
+    login_url = 'login'
     template_name = 'custom_users/profile.html'
     context_object_name = 'letters'
     extra_context = {

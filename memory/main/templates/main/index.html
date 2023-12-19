@@ -14,12 +14,21 @@
         </div>
         <form class="form-letter needs-validation" method="post" novalidate>
             {% csrf_token %}
-            <div class="row">
-                <div class="col-6 mb-3">
+            <div class="row mb-3">
+                <div class="col-6">
                     <label class="form-label">От кого</label>
                     {{ form.name_from }}
+                    <div class="invalid-feedback">
+                        Обязательное поле.
+                    </div>
+                    <div class="form-check mt-1 d-flex flex-nowrap">
+                        <label class="form-check-label order-1 " for="check-name_from">
+                            отправить не указывая имени отправителя
+                        </label>
+                        <input class="form-check-input order-2 ms-3" type="checkbox" value="" id="check-name_from">
+                    </div>
                 </div>
-                <div class="col-6 mb-3">
+                <div class="col-6">
                     <label class="form-label">Кому</label>
                     {{ form.name_to }}
                     <div class="invalid-feedback">
@@ -27,31 +36,25 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col mb-3">
-                    <label class="form-label">Дата отправки</label>
-                    <div class="row">
-                        <div class="col d-inline-flex">
-                            {{ form.send_date }}
-                            <div class="invalid-feedback error-feedback-right">
-                                Обязательное поле.
-                            </div>
-                        </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Email отправителя</label>
+                    {{ form.email }}
+                </div>
+                <div class="col">
+                    <label class="form-label">Адрес получателя</label>
+                    {{ form.address }}
+                    <div class="invalid-feedback">
+                        Обязательное поле.
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-5 mb-3">
-                    <label class="form-label">Email получателя</label>
-                    {{ form.email }}
-                </div>
-            </div>
-            <div class="row">
                 <div class="col mb-3">
-                    <label class="form-label">Адрес получателя</label>
+                    <label class="form-label">Дата отправки письма</label>
                     <div class="row">
                         <div class="col d-inline-flex">
-                            {{ form.address }}
+                            {{ form.send_date }}
                             <div class="invalid-feedback error-feedback-right">
                                 Обязательное поле.
                             </div>

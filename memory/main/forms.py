@@ -14,6 +14,7 @@ class PostalLetterForm(forms.ModelForm):
         widgets = {
             'name_from': forms.TextInput(attrs={
                 'class': 'form-control',
+                'required': True,
             }),
             'send_date': forms.DateInput(attrs={
                 'class': 'form-control',

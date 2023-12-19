@@ -7,26 +7,33 @@
     <div class="container vh-100 d-flex align-items-center justify-content-center">
         <form class="needs-validation auth-form" method="post" novalidate>
             {% csrf_token %}
-            <div class="row-1">
-                <div class="col mb-3">
-                    <label for="" class="form-label">Email</label>
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Email</label>
                     {{ form.username }}
                     <div class="invalid-feedback">
                         Обязательное поле!
                     </div>
                 </div>
-                <div class="col mb-3">
-                    <label for="" class="form-label">Пароль</label>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Пароль</label>
                     {{ form.password }}
                     <div class="invalid-feedback">
                         Обязательное поле!
                     </div>
                 </div>
-                <div class="col mb-3 error-feedback">
+            </div>
+            <div class="row mb-3">
+                <div class="col error-feedback">
                      {{ form.non_field_errors }}
                 </div>
-                <div class="col d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Войти</button>
+            </div>
+            <div class="row">
+                <div class="col d-flex align-items-center justify-content-around">
+                    <button name="login" type="submit" class="btn btn-success">Войти</button>
+                    <a href="{% url 'registration' %}">Регистрация</a>
                 </div>
             </div>
         </form>

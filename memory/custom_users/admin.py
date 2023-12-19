@@ -9,6 +9,7 @@ admin.site.unregister(Group)
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
+    list_display = ("email", "is_active", "is_staff", 'created')
     fieldsets = (
         (None, {"fields": ("email", "password")}),
         (
@@ -34,7 +35,6 @@ class CustomUserAdmin(UserAdmin):
             },
         ),
     )
-    list_display = ("email", "is_staff")
     list_filter = ("is_staff", "is_superuser", "is_active", "groups")
     search_fields = ("email",)
     ordering = ("email",)

@@ -1,4 +1,15 @@
 
 .auth-form {
     width: 500px;
+    border: solid 2px gray;
+    padding: 15px;
+}
+
+.auth-form button[name='login'] {
+    width: 150px;
+}
+
+
+.auth-form a {
+    text-decoration: none;
 }

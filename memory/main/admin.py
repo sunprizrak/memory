@@ -4,7 +4,7 @@ from .models import PostalLetterModel
 
 @admin.register(PostalLetterModel)
 class MemorandumAdmin(admin.ModelAdmin):
-    list_display = ['email', 'send_date', 'created']
+    list_display = ['user', 'name_from', 'email', 'send_date', 'name_to', 'address', 'created']
     readonly_fields = ['name_from', 'email', 'send_date', 'name_to', 'address', 'created']
 
     def get_readonly_fields(self, request, obj=None):

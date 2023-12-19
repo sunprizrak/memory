@@ -18,6 +18,22 @@ function validate_form() {
     });
 }
 
+function check_box_name_from() {
+    $('#check-name_from').change(function() {
+        input = $('#id_name_from');
+
+        if ($(this).is(':checked')) {
+            input.attr('required', false);
+            input.val('');
+            input.attr('disabled', true);
+        } else {
+            input.attr('required', true);
+            input.attr('disabled', false);
+        }
+    });
+}
+
 $(function () {
     validate_form();
+    check_box_name_from();
 });

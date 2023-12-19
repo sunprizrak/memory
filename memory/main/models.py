@@ -6,10 +6,10 @@ from .tasks import send_email_task
 class PostalLetterModel(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
     name_from = models.CharField(verbose_name='От кого', max_length=150, blank=True)
-    send_date = models.DateField(verbose_name='Дата отправки')
+    send_date = models.DateField(verbose_name='Дата отправки письма')
     name_to = models.CharField(verbose_name='Кому')
     address = models.CharField(verbose_name='Адрес получателя')
-    email = models.EmailField(verbose_name='Email получателя', max_length=254, blank=True)
+    email = models.EmailField(verbose_name='Email отправителя', max_length=254, blank=True)
     text = models.TextField(verbose_name='Текст')
     created = models.DateTimeField(verbose_name='Создана', auto_now_add=True)
 

@@ -4,64 +4,60 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-    {% if request.user.is_authenticated %}
-        <div class="container">
-            <div class="row pt-5">
-                <div class="col pt-3 d-flex justify-content-between">
-                    <h1>Мои письма</h1>
-                    <div class="d-flex align-self-center">
-                        <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Написать письмо</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col d-inline-flex">
-                    <div class="wrap-table w-100">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="text-center">Кому</th>
-                                    <th scope="col" class="text-center">Дата отправки</th>
-                                    <th scope="col" class="text-center">Создана</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for letter in letters %}
-                                    <tr data-href="{% url 'letter_update' letter.pk %}">
-                                        <td class="text-center">{{ letter.name_to }}</td>
-                                        <td class="text-center">{{ letter.send_date }}</td>
-                                        <td class="text-center">{{ letter.created }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="wrap-table" id="right-wrap-table">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="text-center">Удалить</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for letter in letters %}
-                                    <tr>
-                                        <td class="text-center">
-                                            <a href="{% url 'letter_delete' letter.pk %}" class="text-danger">
-                                                <i class="bi bi-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col pt-3 d-flex justify-content-between">
+                <h1>Мои письма</h1>
+                <div class="d-flex align-self-center">
+                    <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Написать письмо</button></a>
                 </div>
             </div>
         </div>
-    {% else %}
-        <h1 class="text-center mt-5">Авторизуйтесь</h1>
-    {% endif %}
+        <div class="row">
+            <div class="col d-inline-flex">
+                <div class="wrap-table w-100">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Кому</th>
+                                <th scope="col" class="text-center">Дата отправки</th>
+                                <th scope="col" class="text-center">Создана</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for letter in letters %}
+                                <tr data-href="{% url 'letter_update' letter.pk %}">
+                                    <td class="text-center">{{ letter.name_to }}</td>
+                                    <td class="text-center">{{ letter.send_date }}</td>
+                                    <td class="text-center">{{ letter.created }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="wrap-table" id="right-wrap-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Удалить</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for letter in letters %}
+                                <tr>
+                                    <td class="text-center">
+                                        <a href="{% url 'letter_delete' letter.pk %}" class="text-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block modal %}
