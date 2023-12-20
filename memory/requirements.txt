@@ -4,3 +4,4 @@ django-cleanup
 psycopg2-binary
 django-recaptcha
 django-grappelli
+six
