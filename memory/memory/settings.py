@@ -91,7 +91,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -142,15 +141,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'custom_users.CustomUser'
 
 LOGIN_REDIRECT_URL = "profile"
+LOGOUT_REDIRECT_URL = 'login'
+
+PASSWORD_RESET_TIMEOUT = 14400
 
 # Recaptcha
 
 RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
 
-# Celery
-
-CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL')
 
 # Email
 
@@ -161,4 +160,4 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 
-# SITE_NAME = ""
+SITE_NAME = os.environ.get('SITE_NAME')

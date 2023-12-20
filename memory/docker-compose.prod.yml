@@ -28,44 +28,6 @@ services:
             - "5432:5432"
         env_file:
             - ./.env.prod.db
-    redis:
-        image: redis:7.2.2-alpine
-        hostname: redis
-    worker:
-        build:
-            context: .
-        hostname: worker
-        env_file:
-            - ./.env.prod
-            - ./.env.prod.db
-        entrypoint: celery
-        command: -A celery_app.app worker --loglevel=error
-        volumes:
-            - .:/usr/src/memory
-        links:
-            - redis
-        depends_on:
-            - redis
-            - db
-    flower:
-        build:
-            context: .
-        hostname: flower
-        env_file:
-            - ./.env.prod
-            - ./.env.prod.db
-        entrypoint: celery
-        command: -A celery_app.app flower
-        volumes:
-            - .:/usr/src/memory
-        links:
-            - redis
-        depends_on:
-            - redis
-            - worker
-            - db
-        ports:
-            - '5555:5555'
     nginx:
         build: ./nginx
         volumes:
