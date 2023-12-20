@@ -1,7 +1,18 @@
 {% autoescape off %}
-Hi {{ user.email }},
+Здравствуйте {{ user }}.
 
-Please click on the link below to confirm your registration:
+Вы получили это письмо, поскольку вам необходимо завершить процесс активации на {{ site_name }}.
+
+Пожалуйста, перейдите на следующую страницу, чтобы активировать учетную запись:
 
 {{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+Спасибо за использование нашего сайта!
+
+Команда {{ site_name }}
+
+
+Перейдите по ссылке ниже, чтобы подтвердить регистрацию:
+
+
 {% endautoescape %}

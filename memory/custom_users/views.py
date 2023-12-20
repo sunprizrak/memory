@@ -15,6 +15,7 @@ from custom_users.forms import RegistrationUserForm, LoginUserForm, PasswordEdit
 from custom_users.tokens import account_activation_token
 from main.models import PostalLetterModel
 from .mixins import UnauthorizedRequiredMixin
+from django.conf import settings
 
 
 def activate_email(request, user, to_email):
@@ -24,7 +25,8 @@ def activate_email(request, user, to_email):
         'domain': get_current_site(request).domain,
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': account_activation_token.make_token(user),
-        'protocol': 'https' if request.is_secure() else 'http'
+        'protocol': 'http' if settings.DEBUG else 'https',
+        'site_name': settings.SITE_NAME,
     })
 
     email = EmailMessage(mail_subject, message, to=[to_email])
