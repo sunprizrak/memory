@@ -4,5 +4,3 @@ django-cleanup
 psycopg2-binary
 django-recaptcha
 django-grappelli
-celery[redis]
-flower
